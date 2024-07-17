@@ -2,8 +2,8 @@ package homeworkThree.lesson_3.taskTwo;
 
 public abstract class AbstractShape implements Shape {
 
-    private String fillColor;
-    private String borderColor;
+    private final String fillColor;
+    private final String borderColor;
 
     public AbstractShape(String fillColor, String borderColor) {
         this.fillColor = fillColor;

@@ -4,7 +4,7 @@ public class Cat extends Animal {
 
     private static int catCount = 0;
 
-    private int amountToFed;
+    private final int amountToFed;
     private boolean isFed;
     public Cat(String name, int amountToFed) {
         super(name, false, 200, 0);
@@ -17,7 +17,7 @@ public class Cat extends Animal {
     }
 
     public void feed(Bowl bowl) {
-        if (bowl.getLeftFoodAmount() >= amountToFed) {
+        if (!isFed && bowl.getLeftFoodAmount() >= amountToFed) {
             isFed = true;
             bowl.removeFood(amountToFed);
         }

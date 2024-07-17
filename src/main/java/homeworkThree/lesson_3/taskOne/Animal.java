@@ -4,10 +4,10 @@ public class Animal {
 
     private static int animalCount = 0;
 
-    private String name;
-    private boolean isCanSwim;
-    private int runLimit;
-    private int swimLimit;
+    private final String name;
+    private final boolean isCanSwim;
+    private final int runLimit;
+    private final int swimLimit;
 
     public Animal(String name, boolean isCanSwim, int runLimit, int swimLimit) {
         this.name = name;

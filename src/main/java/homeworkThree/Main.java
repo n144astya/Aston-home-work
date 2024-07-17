@@ -9,9 +9,7 @@ import homeworkThree.lesson_3.taskTwo.Triangle;
 import homeworkThree.lesson_3.taskTwo.Rectangle;
 import homeworkThree.lesson_3.taskTwo.Shape;
 
-import java.awt.*;
-
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         taskOneTest();

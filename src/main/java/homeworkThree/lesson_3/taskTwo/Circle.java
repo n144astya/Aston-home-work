@@ -1,7 +1,7 @@
 package homeworkThree.lesson_3.taskTwo;
 
 public class Circle extends AbstractShape {
-    private double radius;
+    private final double radius;
 
     public Circle(String fillColor, String borderColor, double radius) {
         super(fillColor, borderColor);

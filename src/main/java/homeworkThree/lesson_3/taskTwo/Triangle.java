@@ -2,9 +2,9 @@ package homeworkThree.lesson_3.taskTwo;
 
 public class Triangle extends AbstractShape {
 
-    private double sideA;
-    private double sideB;
-    private double sideC;
+    private final double sideA;
+    private final double sideB;
+    private final double sideC;
 
     public Triangle(String fillColor, String borderColor, double sideA, double sideB, double sideC) {
         super(fillColor, borderColor);

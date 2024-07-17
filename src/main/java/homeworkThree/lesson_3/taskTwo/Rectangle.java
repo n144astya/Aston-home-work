@@ -1,8 +1,8 @@
 package homeworkThree.lesson_3.taskTwo;
 
 public class Rectangle extends AbstractShape {
-    private double length;
-    private double width;
+    private final double length;
+    private final double width;
 
     public Rectangle(String fillColor, String borderColor, double length, double width) {
         super(fillColor, borderColor);
