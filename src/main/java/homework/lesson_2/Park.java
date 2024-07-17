@@ -5,9 +5,19 @@ import java.time.LocalTime;
 public class Park {
 
     private Attraction[] attractions;
+    private String name;
 
-    public Park(Attraction[] attractions) {
+    public Park(Attraction[] attractions, String name) {
         this.attractions = attractions;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Attraction[] getAttractions() {
@@ -18,7 +28,7 @@ public class Park {
         this.attractions = attractions;
     }
 
-    public class Attraction {
+    public static class Attraction {
 
         private String name;
         private LocalTime openTime;
