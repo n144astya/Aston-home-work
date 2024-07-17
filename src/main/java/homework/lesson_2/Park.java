@@ -7,8 +7,7 @@ public class Park {
     private Attraction[] attractions;
     private String name;
 
-    public Park(Attraction[] attractions, String name) {
-        this.attractions = attractions;
+    public Park(String name) {
         this.name = name;
     }
 
@@ -28,7 +27,7 @@ public class Park {
         this.attractions = attractions;
     }
 
-    public static class Attraction {
+    public class Attraction {
 
         private String name;
         private LocalTime openTime;

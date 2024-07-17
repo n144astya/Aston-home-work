@@ -20,14 +20,16 @@ public class Main {
             employee.print();
         }
 
+        Park park = new Park("Местичковый парк таракционов");
+
         Park.Attraction[] attractions = {
-                new Park.Attraction("каруселька", LocalTime.of(9, 30), LocalTime.of(20, 30), 2.0),
-                new Park.Attraction("обезьянка", LocalTime.of(9, 30), LocalTime.of(20, 30), 1.5),
-                new Park.Attraction("трамвайчик", LocalTime.of(9, 30), LocalTime.of(20, 30), 2.5),
-                new Park.Attraction("машинка", LocalTime.of(9, 30), LocalTime.of(20, 30), 5.0)
+                park.new Attraction("каруселька", LocalTime.of(9, 30), LocalTime.of(20, 30), 2.0),
+                park.new Attraction("обезьянка", LocalTime.of(9, 30), LocalTime.of(20, 30), 1.5),
+                park.new Attraction("трамвайчик", LocalTime.of(9, 30), LocalTime.of(20, 30), 2.5),
+                park.new Attraction("машинка", LocalTime.of(9, 30), LocalTime.of(20, 30), 5.0)
         };
 
-        Park park = new Park(attractions, "Местичковый парк таракционов");
+        park.setAttractions(attractions);
 
         System.out.println("Park name: " + park.getName());
         for ( Park.Attraction atr: park.getAttractions()) {
