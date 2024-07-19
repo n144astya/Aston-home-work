@@ -10,11 +10,11 @@ public class Circle extends AbstractShape {
 
     @Override
     public double square() {
-        return Math.PI * radius * radius;
+        return radius > 0? Math.PI * radius * radius : 0;
     }
 
     @Override
     public double perimeter() {
-        return 2 * Math.PI * radius;
+        return radius > 0? 2 * Math.PI * radius : 0;
     }
 }

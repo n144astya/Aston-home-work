@@ -1,6 +1,6 @@
 package homeworkThree.lesson_3.taskOne;
 
-public class Animal {
+public abstract class Animal {
 
     private static int animalCount = 0;
 

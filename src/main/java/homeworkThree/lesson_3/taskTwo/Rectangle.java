@@ -12,11 +12,11 @@ public class Rectangle extends AbstractShape {
 
     @Override
     public double square() {
-        return length * width;
+        return length > 0 && width > 0? length * width : 0;
     }
 
     @Override
     public double perimeter() {
-        return 2 * (length + width);
+        return length > 0 && width > 0? 2 * (length + width) : 0;
     }
 }

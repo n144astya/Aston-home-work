@@ -15,12 +15,15 @@ public class Triangle extends AbstractShape {
 
     @Override
     public double square() {
+        if (sideA <= 0 && sideB <= 0 && sideC <= 0) {
+            return  0;
+        }
         double s = perimeter() / 2;
         return Math.sqrt(s * (s - sideA) * (s - sideB) * (s - sideC));
     }
 
     @Override
     public double perimeter() {
-        return sideA + sideB + sideC;
+        return sideA > 0 && sideB > 0 && sideC > 0? sideA + sideB + sideC : 0;
     }
 }
