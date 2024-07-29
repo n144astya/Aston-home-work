@@ -1,9 +1,6 @@
 package taskOne;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ArrayHandler {
 
@@ -19,14 +16,7 @@ public class ArrayHandler {
         return wordEncounteredNumber;
     }
 
-    public List<String> getUniqueWords(String[] words) {
-        List<String> uniqueWords = new ArrayList<>();
-        Map<String, Integer> wordEncounteredNumber = getWordsEncounteredNumber(words);
-
-        wordEncounteredNumber.forEach((key, value) -> {
-            uniqueWords.add(key);
-        });
-
-        return uniqueWords;
+    public HashSet<String> getUniqueWords(String[] words) {
+        return new HashSet<>(Arrays.asList(words));
     }
 }
