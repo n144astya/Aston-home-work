@@ -21,10 +21,10 @@ public class Main {
     public static void taskOneTest() {
         Bowl bowl = new Bowl(40);
 
-        Cat cat_1 = new Cat("cat_1", 10);
-        Cat cat_2 = new Cat("cat_2", 5);
-        Cat cat_3 = new Cat("cat_3", 35);
-        Cat cat_4 = new Cat("cat_4", 15);
+        Cat cat_1 = new Cat("cat_1", 200, 10);
+        Cat cat_2 = new Cat("cat_2", 200, 5);
+        Cat cat_3 = new Cat("cat_3", 200, 35);
+        Cat cat_4 = new Cat("cat_4", 200, 15);
 
         Cat[] cats = {cat_1, cat_2, cat_3, cat_4};
 
@@ -33,17 +33,19 @@ public class Main {
             System.out.println(cat.getName() + " is fed: " + cat.isFed());
         }
 
-        Animal dog_1 = new Dog("dog_1");
-        Animal dog_2 = new Dog("dog_2");
-        Animal dog_3 = new Dog("dog_3");
-        Animal dog_4 = new Dog("dog_4");
-        Animal dog_5 = new Dog("dog_5");
+        Animal dog_1 = new Dog("dog_1", 500, 10);
+        Animal dog_2 = new Dog("dog_2", 500, 10);
+        Animal dog_3 = new Dog("dog_3", 500, 10);
+        Animal dog_4 = new Dog("dog_4", 500, 10);
+        Animal dog_5 = new Dog("dog_5", 500, 10);
 
         dog_5.swim(500);
+        dog_3.swim(8);
         dog_4.run(600);
         cat_2.swim(20);
         cat_1.run(200);
         dog_2.run(500);
+        cat_4.run(300);
 
         System.out.println("Animals: " + Animal.getAnimalCount() + " Cats: " + Cat.getCatCount() + " Dogs: " + Dog.getDogCount());
     }
