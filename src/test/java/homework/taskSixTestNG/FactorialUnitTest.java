@@ -2,39 +2,30 @@ package homework.taskSixTestNG;
 
 import homework.taskSix.FactorialException;
 import homework.taskSix.FactorialHelper;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 
 public class FactorialUnitTest {
 
-    @Test
-    public void testFactorialOfZero() throws FactorialException {
-        assertEquals(1, new FactorialHelper().getFactorial(0));
+    @DataProvider(name = "factorial")
+    public static Object[][] primeNumbers() {
+        return new Object[][] {{1, 0}, {1, 1}, {121645100408832000L, 19}, {2432902008176640000L, 20}};
     }
 
-    @Test
-    public void testFactorialOfOne() throws FactorialException {
-        assertEquals(1, new FactorialHelper().getFactorial(1));
-    }
-
-    @Test
-    public void testFactorialOfTwo() throws FactorialException {
-        assertEquals(2, new FactorialHelper().getFactorial(2));
-    }
-
-    @Test
-    public void testFactorialOfFive() throws FactorialException {
-        assertEquals(120, new FactorialHelper().getFactorial(5));
-    }
-
-    @Test
-    public void testFactorialOfTen() throws FactorialException {
-        assertEquals(3628800, new FactorialHelper().getFactorial(10));
+    @Test(dataProvider = "factorial")
+    public void testFactorial(long expected, int inputNumber) throws FactorialException {
+        assertEquals(expected, new FactorialHelper().getFactorial(inputNumber), "Unexpected value. Expect " + expected);
     }
 
     @Test(expectedExceptions = FactorialException.class, expectedExceptionsMessageRegExp = "The factorial of a negative number does not exist")
     public void testFactorialOfNegativeNumber() throws FactorialException {
         new FactorialHelper().getFactorial(-1);
+    }
+
+    @Test(expectedExceptions = FactorialException.class, expectedExceptionsMessageRegExp = "The value is too big")
+    public void testFactorialTooBigValue() throws FactorialException {
+        new FactorialHelper().getFactorial(21);
     }
 }
