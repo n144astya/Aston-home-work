@@ -1,22 +1,35 @@
 package taskTwo;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PhoneBook {
 
-    private List<Subscriber> phoneBook;
+//    private List<Subscriber> phoneBook;
+    private Map<String, Object> phoneBook;
 
     public PhoneBook() {
-        phoneBook = new ArrayList<>();
+        phoneBook = new HashMap<>();
     }
 
-    public void add(Subscriber subscriber) {
-        phoneBook.add(subscriber);
+    public void add(String lastName, String phoneNumber) {
+        Object number = phoneBook.get(lastName);
+        if (number != null) {
+           if (number instanceof List) {
+               ((List<String>)number).add(phoneNumber);
+               phoneBook.put(lastName,number);
+           } else {
+               List<String> phoneNumbersList = new ArrayList<>();
+               phoneNumbersList.add(phoneNumber);
+               phoneNumbersList.add((String)number);
+               phoneBook.put(lastName, phoneNumbersList);
+           }
+        } else  {
+            phoneBook.put(lastName, phoneNumber);
+        }
     }
 
-    public List<String> get(String secondName) {
-        return phoneBook.stream().filter(subscriber -> subscriber.getSecondName().equals(secondName)).map(Subscriber::getPhoneNumber).collect(Collectors.toList());
+    public Object get(String lastName) {
+        return phoneBook.get(lastName);
     }
 }
