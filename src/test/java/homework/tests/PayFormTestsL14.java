@@ -1,33 +1,19 @@
 package homework.tests;
 
 import homework.pageObjects.MtsHomePagePayForm;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 
-public class PayFormTests {
+public class PayFormTestsL14 extends BaseTest {
 
-    public static WebDriver driver;
     public static MtsHomePagePayForm payForm;
-
-    @BeforeClass
-    public static void setuo() {
-        WebDriverManager.chromedriver().setup();
-    }
 
     @Before
     public void before() {
-        driver = new ChromeDriver();
+        super.before();
         payForm = new MtsHomePagePayForm(driver);
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.get("http://mts.by");
     }
 
     @Test
@@ -65,10 +51,5 @@ public class PayFormTests {
         payForm.completeForm("297777777", "10", "email@email.com");
         Assert.assertTrue(payForm.isPaidAppShow());
         Assert.assertTrue(payForm.isPaidAppFormContain("10", "297777777"));
-    }
-
-    @After
-    public void tearDown() {
-        driver.quit();
     }
 }
