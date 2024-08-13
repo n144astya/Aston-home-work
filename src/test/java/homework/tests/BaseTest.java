@@ -1,9 +1,9 @@
 package homework.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -13,12 +13,12 @@ public class BaseTest {
 
     public static WebDriver driver;
 
-    @BeforeClass
-    public static void setuo() {
+    @BeforeAll
+    public static void setup() {
         WebDriverManager.chromedriver().setup();
     }
 
-    @Before
+    @BeforeEach
     public void before() {
         driver = new ChromeDriver();
 
@@ -28,7 +28,7 @@ public class BaseTest {
         driver.get("http://mts.by");
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         driver.quit();
     }

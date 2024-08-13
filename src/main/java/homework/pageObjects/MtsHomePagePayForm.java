@@ -152,6 +152,8 @@ public class MtsHomePagePayForm {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
             wait.until(ExpectedConditions.visibilityOf(paidAppForm));
+            driver.switchTo().frame(paidAppForm);
+            wait.until(ExpectedConditions.visibilityOf(paidAppDescriptionCoast));
             return true;
         } catch (Exception e) {
             return false;
@@ -159,7 +161,6 @@ public class MtsHomePagePayForm {
     }
 
     public boolean isPaidAppFormContain(String sum, String phoneNumber) {
-        driver.switchTo().frame(paidAppForm);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(paidAppDescriptionCoast));
         wait.until(ExpectedConditions.visibilityOf(paidAppDescriptionText));
@@ -222,25 +223,43 @@ public class MtsHomePagePayForm {
         typesOfServices.get(index).click();
     }
 
-    public boolean isPaidAppFormValid(String sum,
-                                      String phoneNumber,
-                                      String cardNumberPlaceholder,
-                                      String cardExpirationPlaceholder,
-                                      String cardCVCPlaceholder,
-                                      String cardOwnerPlaceholder) {
-        driver.switchTo().frame(paidAppForm);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.visibilityOf(paidAppDescriptionCoast));
-        wait.until(ExpectedConditions.visibilityOf(paidAppDescriptionText));
+    public boolean isSubmitBtnContainText(String text) {
+        return paidAppSubmitBtn.getText().toLowerCase().contains(text);
+    }
 
-        return paidAppDescriptionCoast.getText().toLowerCase().contains(sum) &&
-                paidAppDescriptionText.getText().toLowerCase().contains(phoneNumber) &&
-                paidAppCardNumber.getText().toLowerCase().contains(cardNumberPlaceholder.toLowerCase()) &&
-                paidAppCardExpirationDate.getText().toLowerCase().contains(cardExpirationPlaceholder.toLowerCase()) &&
-                paidAppCardCVC.getText().toLowerCase().contains(cardCVCPlaceholder.toLowerCase()) &&
-                paidAppCardOwner.getText().toLowerCase().contains(cardOwnerPlaceholder.toLowerCase()) &&
-                googlePay.isDisplayed() &&
-                yandexPay.isDisplayed() &&
-                cardsBrands.isDisplayed();
+    public boolean isDescriptionCoastContainText(String text) {
+        return paidAppDescriptionCoast.getText().toLowerCase().contains(text);
+    }
+
+    public boolean isDescriptionTextContainText(String text) {
+        return paidAppDescriptionText.getText().toLowerCase().contains(text);
+    }
+
+    public boolean isCardNumberContainPlaceholder(String placeholder) {
+        return paidAppCardNumber.getText().toLowerCase().contains(placeholder.toLowerCase());
+    }
+
+    public boolean isCardExpirationDateContainPlaceholder(String placeholder) {
+        return paidAppCardExpirationDate.getText().toLowerCase().contains(placeholder.toLowerCase());
+    }
+
+    public boolean isCardCVCContainPlaceholder(String placeholder) {
+        return paidAppCardCVC.getText().toLowerCase().contains(placeholder.toLowerCase());
+    }
+
+    public boolean isCardOwnerContainPlaceholder(String placeholder) {
+        return paidAppCardOwner.getText().toLowerCase().contains(placeholder.toLowerCase());
+    }
+
+    public boolean isPaymentsCardDisplayed() {
+        return cardsBrands.isDisplayed();
+    }
+
+    public boolean isYandexPayBtnExist() {
+        return yandexPay.isDisplayed();
+    }
+
+    public boolean isGooglePayBtnExist() {
+        return googlePay.isDisplayed();
     }
 }
