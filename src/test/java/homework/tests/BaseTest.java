@@ -1,6 +1,7 @@
 package homework.tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,12 +21,13 @@ public class BaseTest {
 
     @BeforeEach
     public void before() {
-        driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.get("http://mts.by");
+        Allure.step("Initialize driver", () -> {
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            Allure.step("Open web page: http://mts.by");
+            driver.get("http://mts.by");
+        });
     }
 
     @AfterEach

@@ -1,13 +1,16 @@
 package homework.tests;
 
 import homework.pageObjects.MtsHomePagePayForm;
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PayFormTestsL15 extends BaseTest {
+@DisplayName("TestPayFormL15")
+public class TestPayFormL15 extends BaseTest {
 
     public MtsHomePagePayForm payForm;
 
@@ -15,12 +18,16 @@ public class PayFormTestsL15 extends BaseTest {
     public void before() {
         super.before();
         payForm = new MtsHomePagePayForm(driver);
+        Allure.step("Discard cookie");
         payForm.discardCookie();
     }
 
+    @DisplayName("Test Check Communication Services Placeholders")
     @Test
     public void testCheckCommunicationServicesPlaceholders() {
+        Allure.step("Scroll to pay form");
         payForm.scrollToPaymentForm();
+        Allure.step("Communication services placeholders check");
         assertAll("Communication services placeholders check",
                 () -> assertTrue(payForm.isPhoneInputContainPlaceholderText("Номер телефона")),
                 () -> assertTrue(payForm.isSumInputContainPlaceholderText("Сумма")),
@@ -28,10 +35,14 @@ public class PayFormTestsL15 extends BaseTest {
         );
     }
 
+    @DisplayName("Test Check Home Internet Placeholders")
     @Test
     public void testCheckHomeInternetPlaceholders() {
+        Allure.step("Scroll to pay form");
         payForm.scrollToPaymentForm();
+        Allure.step("Select service type: 2");
         payForm.selectService(1);
+        Allure.step("Home internet placeholders check");
         assertAll("Home internet placeholders check",
                 () -> assertTrue(payForm.isInternetNumberInputContainPlaceholderText("Номер абонента")),
                 () -> assertTrue(payForm.isInternetSumInputContainPlaceholderText("Сумма")),
@@ -39,10 +50,14 @@ public class PayFormTestsL15 extends BaseTest {
         );
     }
 
+    @DisplayName("Test Check Instalment Placeholders")
     @Test
     public void testCheckInstalmentPlaceholders() {
+        Allure.step("Scroll to pay form");
         payForm.scrollToPaymentForm();
+        Allure.step("Select service type: 3");
         payForm.selectService(2);
+        Allure.step("Instalment placeholders check");
         assertAll("Instalment placeholders check",
                 () -> assertTrue(payForm.isInstalmentAccountNumberInputContainPlaceholderText("Номер счета на 44")),
                 () -> assertTrue(payForm.isInstalmentSumInputContainPlaceholderText("Сумма")),
@@ -50,10 +65,14 @@ public class PayFormTestsL15 extends BaseTest {
         );
     }
 
+    @DisplayName("Test Check Arrears Placeholders")
     @Test
     public void testCheckArrearsPlaceholders() {
+        Allure.step("Scroll to pay form");
         payForm.scrollToPaymentForm();
+        Allure.step("Select service type: 4");
         payForm.selectService(3);
+        Allure.step("Arrears placeholders check");
         assertAll("Arrears placeholders check",
                 () -> assertTrue(payForm.isArrearsAccountNumberInputContainPlaceholderText("Номер счета на 2073")),
                 () -> assertTrue(payForm.isArrearsSumInputContainPlaceholderText("Сумма")),
@@ -61,11 +80,14 @@ public class PayFormTestsL15 extends BaseTest {
         );
     }
 
+    @DisplayName("Test Check Payments")
     @Test
     public void testCheckPayments() {
+        Allure.step("Scroll to pay form");
         payForm.scrollToPaymentForm();
+        Allure.step("Fill payment form and submit");
         payForm.completeForm("297777777", "10", "email@email.com");
-
+        Allure.step("Pay app form validation");
         assertAll("Pay app form validation",
                 () -> assertTrue(payForm.isPaidAppShow()),
                 () -> assertTrue(payForm.isSubmitBtnContainText("10")),
